@@ -1,22 +1,21 @@
-# gazebo_apm_mavros
+# Simulacion de un drone en gazebo
 
-it is (gazebo models and worlds + ardupilot + my_mavros_api) in order to communicate and control drone to accomplishe a specifice mssions.
-## install gazebo 11 from source
+## instalar gazebo 11 
 http://gazebosim.org/tutorials?tut=install_from_source&cat=install
 
-## install ardupilot from source
+## instalar ardupilot 
 https://ardupilot.org/dev/docs/building-setup-linux.html
 
-## install ros from source
+## instalar ros
 http://wiki.ros.org/noetic/Installation/Ubuntu
 
-## install mavros/mavlink from source
+## instalar mavros/mavlink
 https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation
 
-## download reposity 
-1- open catkin_ws/src on terminal
+## descargar repositorio
+1- abrir catkin_ws/src en el terminal
 
-2- clone my reposity 
+2- clonar mi repositorio
 
 3- cd catkin_ws
 
@@ -24,7 +23,7 @@ https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation
 
 5- gedit ~/.bashrc
 
-6- at the end add these lines
+6- al final agrega estas líneas
 
 ** ros path 
 
@@ -42,45 +41,34 @@ https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation
   
   export GAZEBO_PLUGIN_PATH=~/catkin_ws/src/gazebo_apm_mavros/src:${GAZEBO_PLUGIN_PATH}
   
-7- ctrl+s and close it
+7- ctrl+s y cerrar
 
 8- source ~/.bashrc
 
-9- open scripts file on terminal
+9- abrir scripts en el terminal
 
-10- chmod +x obstacle_avoidance.py             # to give it permission to run you will make this for all python modules #  
+10- chmod +x obstacle_avoidance.py             # para darle permiso para ejecutarse, se hará esto para todos los módulos de Python #
 
-11- tip:- open apm.launch file from mavros and change FCU_URL connection to udp like "udp: //: 14550 @ 192.168.1.130@5760"
+11- nota:-abra el archivo apm.launch desde mavros y cambie la conexión FCU_URL a udp como "udp: //: 14550 @ 192.168.1.130@5760"
 
-          or look at http://wiki.ros.org/mavros
+           o mire http://wiki.ros.org/mavros
           
-## Show Time
-### open 4 terminals add each add these lines in order and wait until being intiated
-- first : roslaunch gazbo obstacle_avoidance.launch
+## Simulacion
+### abrir 4 terminales agregue cada una agregue estas líneas en orden y espere hasta que se inicie
+- primero: roslaunch gazbo obstacle_avoidance.launch
 
-- second : sim_vehicle.py -v ArduCopter -f gazebo-iris -I0
+- segundo: sim_vehicle.py -v ArduCopter -f gazebo-iris -I0
 
-- third : roslaunch mavros  apm.launch
+- tercero: roslaunch mavros apm.launch
 
-- fourth : rosrun gazbo obstacle_avoidance.py
+- cuarto: rosrun gazbo obstacle_avoidance.py
 
+# Mover a nueva ubicacion
+- primero: roslaunch gazbo grass.launch
 
-##                                                obstacle_avoidance onepoint lidar simulation
+- segundo: sim_vehicle.py -v ArduCopter -f gazebo-iris -I0
 
-## Screen shot
-![Screenshot 2021-09-26 211112](https://user-images.githubusercontent.com/77525029/134928960-77ba02a6-bdd1-4a8e-936f-2a5d181accfe.png)
+- tercero: roslaunch mavros apm.launch
 
-## Video link
-https://www.youtube.com/watch?v=CG5Po6Zi3hM
+- cuarto: rosrun gazbo move_nesw_localy.py
 
-# Move_nesw_localy
-- first : roslaunch gazbo grass.launch
-
-- second : sim_vehicle.py -v ArduCopter -f gazebo-iris -I0
-
-- third : roslaunch mavros  apm.launch
-
-- fourth : rosrun gazbo move_nesw_localy.py
-
-## Video link
-https://www.youtube.com/watch?v=wuW9swpovKI
